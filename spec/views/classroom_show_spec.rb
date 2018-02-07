@@ -1,10 +1,13 @@
 require "rails_helper"
 
+
+
 RSpec.describe "classroom_show_view" do
   let(:classroom) { Classroom.create(course_name: 'Math', semester: "Spring #{Time.now.year}") }
   let(:student){ Student.create(name: 'Bobby', hometown: Faker::Address.city, birthday: Faker::Date.between(25.years.ago, 18.years.ago)) }
 
   before do
+    Student.destroy_all
     5.times do
       Student.create(name: Faker::Name.name, hometown: Faker::Address.city, birthday: Faker::Date.between(25.years.ago, 18.years.ago))
     end

@@ -21,7 +21,9 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.all
+    if params[:q]
+      @students = Student.search(params[:q])
+    end
   end
 
   def student_params
